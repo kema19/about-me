@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Джамиля — Личный сайт</title>
+    <style>
+        :root {
+            --bg-color: #f4f7fb;
+            --card-bg: #ffffff;
+            --primary: #6c5ce7;
+            --primary-hover: #5849c4;
+            --accent: #00cec9;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 20px;
+        }
+
+        body.dark-theme {
+            --bg-color: #13151f;
+            --card-bg: #1e2130;
+            --primary: #a29bfe;
+            --primary-hover: #887ff7;
+            --accent: #55efc4;
+            --text-main: #f5f6fa;
+            --text-muted: #a4b0be;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0 30px;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .theme-btn {
+            background: var(--card-bg);
+            color: var(--text-main);
+            border: 2px solid var(--primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .theme-btn:hover {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        .hero {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(108, 92, 231, 0.3);
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.15);
+            color: var(--primary);
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card h2 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 7px 14px;
+            border-radius: 12px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        ul.goals {
+            list-style: none;
+        }
+
+        ul.goals li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+            color: var(--text-muted);
+        }
+
+        ul.goals li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .interactive-box {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .interactive-box p {
+            color: var(--text-muted);
+            margin-bottom: 18px;
+        }
+
+        .action-btn {
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 12px 26px;
+            border-radius: 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.1s ease;
+        }
+
+        .action-btn:hover {
+            background: var(--primary-hover);
+        }
+
+        .action-btn:active {
+            transform: scale(0.97);
+        }
+
+        #fact-display {
+            margin-top: 18px;
+            font-weight: 600;
+            color: var(--primary);
+            min-height: 24px;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding: 20px 0;
+        }
+
+        @media (max-width: 600px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">&lt;Dzhamilya /&gt;</div>
+            <button class="theme-btn" id="themeToggle">🌙 Тёмная тема</button>
+        </header>
+
+        <section class="hero">
+            <div class="avatar">Д</div>
+            <div class="hero-text">
+                <span class="badge">13 лет • Начинающий разработчик</span>
+                <h1>Привет! Я Джамиля 👋</h1>
+                <p>Я обожаю узнавать что-то новое, разбираться в том, как устроены технологии, и создавать свои проекты с помощью программирования. Это моя личная страница в интернете!</p>
+            </div>
+        </section>
+
+        <div class="grid">
+            <div class="card">
+                <h2>💻 Мои навыки и интересы</h2>
+                <div class="tags">
+                    <span class="tag">HTML &amp; CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Создание сайтов</span>
+                    <span class="tag">Логика и задачи</span>
+                    <span class="tag">Новые технологии</span>
+                    <span class="tag">Саморазвитие</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🚀 Мои цели</h2>
+                <ul class="goals">
+                    <li>Изучить веб-разработку на продвинутом уровне</li>
+                    <li>Создать своё портфолио с крутыми проектами</li>
+                    <li>Освоить Python и разработку ботов или игр</li>
+                    <li>Никогда не переставать учиться новому</li>
+                </ul>
+            </div>
+        </div>
+
+        <section class="interactive-box">
+            <h2>✨ Немного обо мне</h2>
+            <p>Нажми на кнопку ниже, чтобы узнать случайный факт или моё правило в учёбе!</p>
+            <button class="action-btn" id="factBtn">Показать факт</button>
+            <div id="fact-display"></div>
+        </section>
+
+        <footer>
+            Сделано с интересом к коду • Джамиля, 2026
+        </footer>
+    </div>
+
+    <script>
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-theme');
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.textContent = '☀️ Светлая тема';
+            } else {
+                themeToggle.textContent = '🌙 Тёмная тема';
+            }
+        });
+
+        const facts = [
+            "Люблю, когда сложная задача в коде наконец-то начинает работать!",
+            "Мне 13 лет, и я уже делаю свои первые шаги в веб-разработке.",
+            "Считаю, что каждый день можно узнать хотя бы одну новую полезную вещь.",
+            "Этот сайт написан на чистом HTML, CSS и JavaScript в одном файле!",
+            "Программирование для меня — это способ превращать идеи в реальность."
+        ];
+
+        const factBtn = document.getElementById('factBtn');
+        const factDisplay = document.getElementById('fact-display');
+        let lastIndex = -1;
+
+        factBtn.addEventListener('click', () => {
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * facts.length);
+            } while (randomIndex === lastIndex);
+            lastIndex = randomIndex;
+            factDisplay.textContent = facts[randomIndex];
+        });
+    </script>
+</body>
+</html>
